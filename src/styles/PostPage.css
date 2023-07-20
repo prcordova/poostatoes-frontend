@@ -1,0 +1,32 @@
+div.post-page div.image {
+  max-height: 200px;
+  display: flex;
+  overflow: hidden;
+}
+
+div.post-page div.image img {
+  object-fit: cover;
+  object-position: center center;
+}
+
+div.post-page a {
+  color: #333;
+  text-decoration: underline;
+}
+
+div.post-page h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+.created-at {
+  display: flex;
+  align-items: center;
+  justify-content: space-between
+}
+
+time {
+  font-size: 0.7rem;
+  color: #aaa;
+}
