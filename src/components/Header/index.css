@@ -1,0 +1,38 @@
+header {
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    align-items: center;
+    background-color: rgb(15, 15, 39);
+
+}
+
+header a {
+    text-decoration: none;
+    color: white;
+
+}
+
+.logo {
+    font-weight: bold;
+
+
+    font-size: 1.5rem;
+}
+
+header nav {
+    display: flex;
+
+    gap: 15px;
+    color: white;
+
+
+}
+
+@media (max-width: 449px) {
+    .logo {
+        display: none;
+
+    }
+}

@@ -75,7 +75,18 @@ export default function CreatePost() {
       />
       <Input type="file" onChange={(e) => setFiles(e.target.files)} />
       <Editor value={content} onChange={setContent} />
-      <button style={{ marginTop: "5px" }}>Create Post</button>
+      <button
+        className="create-new-post-btn"
+        style={{
+          marginTop: "8px",
+          borderRadius: ".5rem",
+          backgroundColor: "blue",
+          color: "white",
+          border: "none",
+        }}
+      >
+        Create
+      </button>
     </form>
   );
 }
