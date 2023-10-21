@@ -17,8 +17,6 @@ header a {
 
 .logo {
     font-weight: bold;
-
-
     font-size: 1.5rem;
 }
 
@@ -29,4 +27,12 @@ header nav {
     color: white;
 
 
+}
+
+
+
+@media(max-width: 450px) {
+    header span {
+        display: none
+    }
 }

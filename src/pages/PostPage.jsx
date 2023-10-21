@@ -27,11 +27,11 @@ export default function PostPage() {
 
   return (
     <div className="post-page">
-      <h1>{postInfo.title}</h1>
+      <h1>{postInfo?.title}</h1>
       <div className="created-at">
-        <span className="author">Por {postInfo.author.username}</span>
-        {userInfo.id === postInfo.author._id && (
-          <Link to={`/edit/${postInfo._id}`}>
+        <span className="author">Por {postInfo?.author?.username}</span>
+        {userInfo?.id === postInfo?.author?._id && (
+          <Link to={`/edit/${postInfo?._id}`}>
             <ActionButton ActionText="Editar" edit={true} />
           </Link>
         )}
