@@ -3,7 +3,7 @@ import { Navigate, useParams } from "react-router-dom";
 import Editor from "../components/Editor";
 import Input from "../components/Input";
 import { useEffect } from "react";
-
+import { updatePost } from "../services/api";
 export default function EditPost() {
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
@@ -67,7 +67,7 @@ export default function EditPost() {
         value={summary}
         onChange={(e) => setSummary(e.target.value)}
       />
-      <input type="file" onChange={(e) => setFiles(e.target.files)} />
+      <input type="file" onChange={(e) => setFiles(e.target.files)} multiple />
       <Editor value={content} onChange={setContent} />
       <button style={{ marginTop: "5px" }}>Update Post</button>
     </form>

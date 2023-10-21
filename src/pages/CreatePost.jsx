@@ -38,7 +38,7 @@ export default function CreatePost() {
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
   const [content, setContent] = useState("");
-  const [files, setFiles] = useState("");
+  const [files, setFiles] = useState(null);
   const [redirect, setRedirect] = useState(false);
 
   if (redirect) {
@@ -51,6 +51,7 @@ export default function CreatePost() {
     if (title && summary && content) {
       try {
         const token = "seu_jwt_aqui"; // Substitua pelo JWT real armazenado no frontend
+
         await createNewPost(title, summary, content, files, token);
         setRedirect(true);
       } catch (error) {
@@ -73,7 +74,8 @@ export default function CreatePost() {
         value={summary}
         onChange={(e) => setSummary(e.target.value)}
       />
-      <Input type="file" onChange={(e) => setFiles(e.target.files)} />
+      <Input type="file" onChange={(e) => setFiles(e.target.files)} multiple />
+
       <Editor value={content} onChange={setContent} />
       <button
         className="create-new-post-btn"
