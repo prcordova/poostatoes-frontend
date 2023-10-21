@@ -3,6 +3,7 @@ import "./index.css";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../context/userContext";
 import Logo from "../Logo";
+import AdComponent from "../AdComponent";
 
 export default function Header() {
   const { setUserInfo, userInfo } = useContext(UserContext);
@@ -36,28 +37,31 @@ export default function Header() {
   const username = userInfo?.username;
 
   return (
-    <header>
-      <Link to="/" className="logo">
-        <Logo />
-      </Link>
-      <nav>
-        {username && (
-          <>
-            <span>Hello, {username}</span>
-            <Link to="/">Inicio</Link>
-            <Link to="/create">Novo post</Link>
-            <Link to="/">
-              <a onClick={logout}>Sair</a>
-            </Link>
-          </>
-        )}
-        {!username && (
-          <>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
-          </>
-        )}
-      </nav>
-    </header>
+    <>
+      <header>
+        <Link to="/" className="logo">
+          <Logo />
+        </Link>
+        <nav>
+          {username && (
+            <>
+              <span>Hello, {username}</span>
+              <Link to="/">Inicio</Link>
+              <Link to="/create">Novo post</Link>
+              <Link to="/">
+                <a onClick={logout}>Sair</a>
+              </Link>
+            </>
+          )}
+          {!username && (
+            <>
+              <Link to="/login">Login</Link>
+              <Link to="/register">Register</Link>
+            </>
+          )}
+        </nav>
+      </header>
+      <AdComponent />
+    </>
   );
 }
