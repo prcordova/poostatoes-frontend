@@ -25,7 +25,7 @@ export default function Post({
         </Link>
         <p className="info">
           <Link to="/" className="author">
-            {author.username}
+            {author?.username}
           </Link>
           <time>{format(new Date(createdAt), "dd MMM, yyyy | hh:mm")}</time>
         </p>

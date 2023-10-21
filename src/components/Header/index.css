@@ -1,5 +1,6 @@
 header {
-    padding: 2rem;
+    padding: .2rem 3rem .2rem;
+
     display: flex;
     justify-content: space-between;
     margin-bottom: 50px;
@@ -28,11 +29,4 @@ header nav {
     color: white;
 
 
-}
-
-@media (max-width: 449px) {
-    .logo {
-        display: none;
-
-    }
 }

@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import "./index.css";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../context/userContext";
+import Logo from "../Logo";
 
 export default function Header() {
   const { setUserInfo, userInfo } = useContext(UserContext);
@@ -37,7 +38,7 @@ export default function Header() {
   return (
     <header>
       <Link to="/" className="logo">
-        TechBitata
+        <Logo />
       </Link>
       <nav>
         {username && (
