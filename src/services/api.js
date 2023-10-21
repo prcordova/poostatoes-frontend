@@ -134,7 +134,8 @@ export const registerUser = async (userData) => {
       return false;
     }
   } catch (error) {
-    console.error(error);
+    console.error("Erro : ", error);
+
     throw error;
   }
 };

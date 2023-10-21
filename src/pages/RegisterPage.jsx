@@ -29,6 +29,7 @@ export default function RegisterPage() {
         alert("Register failed");
       }
     } catch (error) {
+      alert("Register failed");
       console.log(error);
     }
   }
