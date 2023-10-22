@@ -14,7 +14,7 @@ export default function EditPost() {
 
   useEffect(() => {
     try {
-      fetch("http://localhost:4000/post/" + id).then((response) => {
+      fetch("https://poostatoes-api.vercel.app/post/" + id).then((response) => {
         response.json().then((postInfo) => {
           setTitle(postInfo.title);
           setContent(postInfo.content);
@@ -42,7 +42,7 @@ export default function EditPost() {
       if (files?.[0]) {
         data.set("file", files?.[0]);
       }
-      await fetch("http://localhost:4000/post", {
+      await fetch("https://poostatoes-api.vercel.app/post", {
         method: "PUT",
         body: data,
         credentials: "include",

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:4000"; // Substitua pela URL base da sua API backend
+export const API_BASE_URL = "https://poostatoes-api.vercel.app/"; // Substitua pela URL base da sua API backend
 
 export const createNewPost = async (title, summary, content, files, token) => {
   const data = new FormData();
