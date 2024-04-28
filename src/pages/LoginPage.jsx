@@ -12,6 +12,7 @@ export default function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
+
   const { setUserInfo } = useContext(UserContext);
 
   async function login(e) {
@@ -19,7 +20,12 @@ export default function LoginPage() {
 
     try {
       const userInfo = await loginUser(username, password);
+
       setUserInfo(userInfo);
+      if (userInfo) {
+        localStorage.setItem("session", JSON.stringify(userInfo));
+      }
+
       setRedirect(true);
     } catch (error) {
       alert("wrong credentials");
@@ -46,9 +52,7 @@ export default function LoginPage() {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-      <Box>
-        <Recaptcha />
-      </Box>
+
       <Button buttonText="Entrar" />
     </form>
   );

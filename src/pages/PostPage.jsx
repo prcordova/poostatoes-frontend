@@ -5,7 +5,7 @@ import "../styles/PostPage.css";
 import { UserContext } from "../context/userContext";
 import Button from "../components/Button";
 import ActionButton from "../components/ActionButton";
-import { getPostById } from "../services/api";
+import { API_BASE_URL, getPostById } from "../services/api";
 import api from "../services/api";
 export default function PostPage() {
   const { id } = useParams();
@@ -40,10 +40,7 @@ export default function PostPage() {
         </time>
       </div>
       <div className="image">
-        <img
-          src={`https://poostatoes-api.vercel.app/${postInfo.cover}`}
-          alt="Post Cover"
-        />
+        <img src={`${API_BASE_URL}/${postInfo.cover}`} alt="Post Cover" />
       </div>
       <div
         className="content"

@@ -2,6 +2,7 @@ import React from "react";
 import "./index.css";
 import { Link } from "react-router-dom";
 import { format } from "date-fns";
+import { API_BASE_URL } from "../../services/api";
 
 export default function Post({
   author,
@@ -16,7 +17,7 @@ export default function Post({
     <div className="post">
       <div className="image">
         <Link to={`/post/${_id}`}>
-          <img src={"https://poostatoes-api.vercel.app/" + cover} alt="" />
+          <img src={`${API_BASE_URL}` + cover} alt="" />
         </Link>
       </div>
       <div className="texts">

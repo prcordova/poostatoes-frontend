@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { Navigate } from "react-router-dom";
 import Editor from "../components/Editor";
 import Input from "../components/Input";
 import { createNewPost } from "../services/api";
+import { UserContext } from "../context/userContext";
 
 const modules = {
   toolbar: [
@@ -40,6 +41,7 @@ export default function CreatePost() {
   const [content, setContent] = useState("");
   const [files, setFiles] = useState(null);
   const [redirect, setRedirect] = useState(false);
+  const { userInfo } = useContext(UserContext);
 
   if (redirect) {
     return <Navigate to={"/"} />;
@@ -50,7 +52,7 @@ export default function CreatePost() {
 
     if (title && summary && content) {
       try {
-        const token = "seu_jwt_aqui"; // Substitua pelo JWT real armazenado no frontend
+        const token = userInfo.token;
 
         await createNewPost(title, summary, content, files, token);
         setRedirect(true);
@@ -63,18 +65,28 @@ export default function CreatePost() {
   return (
     <form onSubmit={handleCreateNewPost}>
       <Input
+        label={"Title"}
         type="text"
+        name="title"
         placeholder="Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
       <Input
+        label={"Summary"}
         type="text"
+        name="summary"
         placeholder="Summary"
         value={summary}
         onChange={(e) => setSummary(e.target.value)}
       />
-      <Input type="file" onChange={(e) => setFiles(e.target.files)} multiple />
+      <Input
+        label={"File"}
+        name="file"
+        type="file"
+        onChange={(e) => setFiles(e.target.files)}
+        multiple
+      />
 
       <Editor value={content} onChange={setContent} />
       <button

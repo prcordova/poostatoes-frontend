@@ -3,7 +3,7 @@ import { Navigate, useParams } from "react-router-dom";
 import Editor from "../components/Editor";
 import Input from "../components/Input";
 import { useEffect } from "react";
-import { updatePost } from "../services/api";
+import { API_BASE_URL, updatePost } from "../services/api";
 export default function EditPost() {
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
@@ -14,7 +14,7 @@ export default function EditPost() {
 
   useEffect(() => {
     try {
-      fetch("https://poostatoes-api.vercel.app/post/" + id).then((response) => {
+      fetch(`${API_BASE_URL}/post` + id).then((response) => {
         response.json().then((postInfo) => {
           setTitle(postInfo.title);
           setContent(postInfo.content);
@@ -42,7 +42,7 @@ export default function EditPost() {
       if (files?.[0]) {
         data.set("file", files?.[0]);
       }
-      await fetch("https://poostatoes-api.vercel.app/post", {
+      await fetch(`${API_BASE_URL}/post`, {
         method: "PUT",
         body: data,
         credentials: "include",
