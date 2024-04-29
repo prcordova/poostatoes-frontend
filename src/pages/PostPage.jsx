@@ -13,7 +13,6 @@ export default function PostPage() {
   const { userInfo } = useContext(UserContext);
 
   useEffect(() => {
-    console.log(id);
     try {
       getPostById(id).then((fetchedPostInfo) => {
         setPostInfo(fetchedPostInfo);

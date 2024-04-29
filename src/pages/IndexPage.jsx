@@ -9,8 +9,11 @@ export default function IndexPage() {
     try {
       getAllPosts().then((fetchedPosts) => {
         setPosts(fetchedPosts);
+        console.log(fetchedPosts);
       });
-    } catch (e) {}
+    } catch (e) {
+      console.log(e);
+    }
   }, []);
 
   return (
