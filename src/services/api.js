@@ -83,7 +83,10 @@ export const updatePost = async (
 
 export const getAllPosts = async () => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/post`);
+    const response = await axios.get(`${API_BASE_URL}/post`, {
+      withCredentials: true,
+    });
+
     if (response.status === 200) {
       return response.data;
     } else {

@@ -4,6 +4,7 @@ import Editor from "../components/Editor";
 import Input from "../components/Input";
 import { useEffect } from "react";
 import { API_BASE_URL, updatePost } from "../services/api";
+
 export default function EditPost() {
   const [title, setTitle] = useState("");
   const [summary, setSummary] = useState("");
@@ -11,22 +12,26 @@ export default function EditPost() {
   const [files, setFiles] = useState("");
   const [redirect, setRedirect] = useState(false);
   const [cover, setCover] = useState("");
+  const { id } = useParams();
 
   useEffect(() => {
     try {
-      fetch(`${API_BASE_URL}/post` + id).then((response) => {
-        response.json().then((postInfo) => {
+      fetch(`${API_BASE_URL}/post/${id}`)
+        .then((response) => response.json())
+        .then((postInfo) => {
           setTitle(postInfo.title);
           setContent(postInfo.content);
           setSummary(postInfo.summary);
+          setCover(postInfo.cover);
+          // Se `files` é um campo que pode ser editado, você também deve definir `files` aqui.
+          // Por exemplo:
+          // setFiles(postInfo.files);
         });
-      });
     } catch (e) {
       console.log(e);
     }
-  }, []);
+  }, [id]);
 
-  const { id } = useParams();
   if (redirect) {
     return <Navigate to={"/post/" + id} />;
   }
