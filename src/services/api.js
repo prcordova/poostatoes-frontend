@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const API_BASE_URL = window.location.host.includes("localhost:3000")
   ? "http://localhost:4000"
-  : "https://poostatoes-api.vercel.app";
+  : "https://poostatoesserver-gfi0tzh4.b4a.run";
 
 export const createNewPost = async (title, summary, content, files, token) => {
   const data = new FormData();
